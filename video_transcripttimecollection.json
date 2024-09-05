@@ -1,0 +1,402 @@
+{
+   "py/object":"app.src.app.domain.model.transcript_time_collection.TranscriptTimeCollection",
+   "class_material_id":"f7fa595a-6769-4f5c-8f62-110fb8e724be",
+   "transcript_time_collection":[
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"c7db58db-0f2d-4ee4-adff-55613ba8c3ca",
+         "startTime":0.0,
+         "endTime":8.0,
+         "transcript":" Eu sou um estudo programador, entrando a empresa muito grande, como Google, Amazon, Facebook, Netflix, Apple, Twitter.",
+         "keywords":[
+            "apple",
+            "amazon",
+            "twitter",
+            "netflix",
+            "facebook"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"2810f243-9fa5-4129-a81f-007f7aac709c",
+         "startTime":8.0,
+         "endTime":15.0,
+         "transcript":" E essa empresa tem uma coisa incomum, que todas elas cobram uma entrevista t\u00e9cnica que envolve normalmente um quadro e branco.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"77fab08b-8830-4dc9-810e-94fdd0c50168",
+         "startTime":15.0,
+         "endTime":22.0,
+         "transcript":" E esse quadro e branco vai ter um entrevistador que vai solicitar para fazer um algoritmo sobre um problema espec\u00edfico.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"ababfa7b-1dd4-4b42-9b98-e3f2d611eb21",
+         "startTime":22.0,
+         "endTime":30.0,
+         "transcript":" E essa \u00e9 definitivamente a esquivo mais cobrada pelo secretador de Big Text e em presa em transidade geral.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"37aa4ab1-4c3f-44f8-92e3-d34b04995298",
+         "startTime":30.0,
+         "endTime":37.0,
+         "transcript":" Todos os desafios \u00e9 c\u00f3digo que voc\u00ea vai fazer para empresas estrangeiras, v\u00e3o te cobrar conhecimento aprofundado em duas coisas,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"9892d8c9-dc30-4386-8df2-1c2a3b342600",
+         "startTime":37.0,
+         "endTime":40.0,
+         "transcript":" surpreendidados e algoritmas.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"d5100cdd-a26d-4a00-a79a-52971bf5b86e",
+         "startTime":40.0,
+         "endTime":46.0,
+         "transcript":" E esse \u00e9 um conhecimento que \u00e9 pouco aprofundado em cursos online e tecnologias que voc\u00ea vai estudar por mercado.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"84115109-b824-4374-b951-250a117ac4ed",
+         "startTime":46.0,
+         "endTime":53.0,
+         "transcript":" Ent\u00e3o, com isso o que eu quero de falar \u00e9 o seguinte, se voc\u00ea tem o desejo de se destacar dos mais concorrentes,",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"218c4620-f45b-4481-83fc-1173821f9437",
+         "startTime":53.0,
+         "endTime":61.0,
+         "transcript":" se voc\u00ea tem o desejo de passar nas entrevistas t\u00e9cnicas, foque nesse dois pontos, os surijidades e algoritmas.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"f526d17c-7940-440e-8727-ce67c8861cc5",
+         "startTime":61.0,
+         "endTime":68.0,
+         "transcript":" E isso \u00e9 muito importante. E quando eu vejo grandes programadores e programadores muito bons,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"a50d9d7c-589c-4c9e-a22f-0dd796bbe4a8",
+         "startTime":68.0,
+         "endTime":76.0,
+         "transcript":" todos eles t\u00eam esse consequcimento muito bem consolidado de como lidar com dados maneleficientes e otimizada,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"a3926373-1c2c-4bca-9b21-e5c67448f182",
+         "startTime":76.0,
+         "endTime":85.0,
+         "transcript":" porque a medida que suas aplica\u00e7\u00f5es escala \u00e9 muito importante que voc\u00ea tenha um c\u00f3digo sustent\u00e1vel para lidar com inputs de milh\u00f5es de dados,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"b7806391-16d2-42a2-9c77-8a86731b79a9",
+         "startTime":85.0,
+         "endTime":93.0,
+         "transcript":" de centenas de milhares de dados e sem o conhecimento apropriado de algoritmos e frigidados isso n\u00e3o \u00e9 poss\u00edvel.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"9e14a5ad-c44b-4cba-813c-4f3926eb0ac4",
+         "startTime":93.0,
+         "endTime":100.0,
+         "transcript":" Ent\u00e3o, esse \u00e9 um conhecimento que eu tenho certeza que vai te dar muita base para implementar outras coisas,",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"e107cdbe-fc30-4174-ac7b-9a40a9e69d36",
+         "startTime":100.0,
+         "endTime":108.0,
+         "transcript":" para implementar suas pr\u00f3prias solu\u00e7\u00f5es e para que voc\u00ea se torne um programador mais maduro para entender tamb\u00e9m o que est\u00e1 rolando por tr\u00e1s dos frameworks,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"4b4c76c9-44ea-40dd-bb0e-731eb4ba2942",
+         "startTime":108.0,
+         "endTime":115.0,
+         "transcript":" que no geral todos eles implementam de maneira muito otimizada e j\u00e1 testada por um milhawn de senares diferentes,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"1461afe7-278c-4e67-8db9-b34ea04e92d9",
+         "startTime":115.0,
+         "endTime":127.0,
+         "transcript":" essas algoritmas e est\u00fargidas. E por que eu acho importante esses assuntos at\u00e9 um tempo atr\u00e1s eu tinha um certo preconceito,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"5d5875e1-8e22-452c-8ace-92aa7e81235b",
+         "startTime":127.0,
+         "endTime":137.0,
+         "transcript":" um lidar com entender, porque essas empresas grandes cobravam esses tipos de testes para voc\u00ea entrar nela,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"dfc27c29-c3aa-4ecf-8f51-a57f30443347",
+         "startTime":137.0,
+         "endTime":147.0,
+         "transcript":" porque querendo n\u00e3o, no dia a dia a gente n\u00e3o acaba usando eles, a gente acaba n\u00e3o tendo esse contato direto com essas estruturas,",
+         "keywords":[
+            "gente"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"e63df3ed-baa7-4e3c-a154-94f69655ad21",
+         "startTime":147.0,
+         "endTime":153.0,
+         "transcript":" s\u00f3 que quando a gente vai falar de Big Tech, a gente acaba envolvendo um escopo muito maior e muito grande,",
+         "keywords":[
+            "gente"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"4647dda9-a59f-42f9-9695-d40074db4de6",
+         "startTime":153.0,
+         "endTime":161.0,
+         "transcript":" ent\u00e3o a gente acaba tendo que considerar um pouco o tamanho de usu\u00e1rios de cor \u00e0 aplica\u00e7\u00e3o",
+         "keywords":[
+            "ent\u00e3o",
+            "gente"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"f5b874e7-3615-41e5-a7f4-a83865fe88ea",
+         "startTime":161.0,
+         "endTime":175.0,
+         "transcript":" e eu tive um site conversando na verdade com um dos engenheiros da Google, e ele estava me contando sobre uma das solu\u00e7\u00f5es que a Google Cloud Platforms de Cp oferece,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"fdecff86-1e34-458b-89c6-15a6ba8b573e",
+         "startTime":175.0,
+         "endTime":182.0,
+         "transcript":" que lida com um trilh\u00e3o de requests de uma mensajeria por hora de ser demingado.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"fe81dc58-1537-49cf-bf84-67abc1b7c02d",
+         "startTime":182.0,
+         "endTime":192.0,
+         "transcript":" E ele concluiu esse relato falando como voc\u00ea quer que a gente aceite um cara na Google que n\u00e3o consegue escrever um algoritme, um quadro branco.",
+         "keywords":[
+            "gente"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"775f32c5-c057-4f28-b57c-6a0e55544033",
+         "startTime":192.0,
+         "endTime":205.0,
+         "transcript":" Depois da\u00ed eu senti muita necessidade de me aprofundar nisso, eu tamb\u00e9m tamb\u00e9m por isso que eu acho importante voc\u00ea seguir uma carreira acad\u00eamica pelo menos por algum tempo.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"6ba13833-1453-4284-a004-fb1a89ea130d",
+         "startTime":205.0,
+         "endTime":217.0,
+         "transcript":" N\u00e3o estou falando que terminar o curso seja melhor solu\u00e7\u00e3o, mas pelo menos esse nisso do curso, o ciclo b\u00e1sico, talvez seja um \u00f3timo momento para voc\u00ea aprender isso.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"34e7588f-2d9b-495e-8e12-6515f7b0a321",
+         "startTime":217.0,
+         "endTime":227.0,
+         "transcript":" E claro que voc\u00ea n\u00e3o precisa fazer uma gradua\u00e7\u00e3o formal, n\u00e3o precisa ir para uma faculdade ou para um bacharel\u00e1rio e para um tecn\u00f3logo para aprender esses assuntos,",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"f5e092b8-7e69-4450-99a5-13e41110bb7e",
+         "startTime":227.0,
+         "endTime":237.0,
+         "transcript":" e para isso eu quero te mostrar algumas estrat\u00e9gias que voc\u00ea pode usar para quem sabe aprender isso de uma forma independente.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"dc26e88b-1698-486b-a0bf-7330d287bd8d",
+         "startTime":237.0,
+         "endTime":241.0,
+         "transcript":" Primeiro, eu devido a esse livro aqui, que eu curto para a Caramba, que eu tenho no algoritmos.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"0be69a9c-5321-42dc-9305-0092aa3815a3",
+         "startTime":241.0,
+         "endTime":256.0,
+         "transcript":" Esse livro foi escrito pela Aditya Pargava, e ele \u00e9 um livro muito fero, porque ele te mostra de maneira ilustrada e bem animada sobre como os algoritmos funcionam.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"eac5cf3e-05d7-465a-8420-04847b0bd2c5",
+         "startTime":256.0,
+         "endTime":275.0,
+         "transcript":" Claro que ele n\u00e3o \u00e9 um livro t\u00e3o profundado, um livro para iniciantes, ela mesmo fala que n\u00e3o \u00e9 um livro para programadores e outros curiosos, ent\u00e3o n\u00e3o espere um conte\u00fado t\u00e3o aprofundado, mas espere ele um conte\u00fado que vai te dar base para voc\u00ea come\u00e7ar a entender os conceitos mais dif\u00edceis nesse t\u00f3pico.",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"9f310017-4f0e-4162-b315-bfa591a09cd0",
+         "startTime":275.0,
+         "endTime":289.0,
+         "transcript":" E outra ferramenta que eu posso te comendar \u00e9 o Liquid, que \u00e9 um site para treinar algoritmos e problemas de l\u00f3gicos e curiosidades, outro deles \u00e9 o Hacker Hanks, que segue a mesma l\u00f3gica e outro \u00e9 o Code Force.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"43b5acd4-47d2-4069-8555-b75dacc7552d",
+         "startTime":289.0,
+         "endTime":301.0,
+         "transcript":" Ent\u00e3o vou te acompanhar esse 3 sites tamb\u00e9m para voc\u00ea treinar esses problemas, e eles s\u00e3o interessantes porque a maior parte das entrevistas t\u00e9cnicas hoje, depois da pandemia, s\u00e3o feitas nesse sites.",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"0d655bb7-ba57-4b01-bc7e-79e1f049829d",
+         "startTime":301.0,
+         "endTime":313.0,
+         "transcript":" O pelo menos as pessoas avaliam sobre o seu site para ver quanto voc\u00ea j\u00e1 fez l\u00e1, para saber se voc\u00ea \u00e9 um v\u00eddeo para a lago ou n\u00e3o, se voc\u00ea tem essas compet\u00eancias nesse assunto que s\u00e3o t\u00e3o desigados no mercado gingo.",
+         "keywords":[
+            
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"6349d8ea-b896-4965-91d3-bc257fc56f0c",
+         "startTime":313.0,
+         "endTime":334.0,
+         "transcript":" E outra ferramenta que eu posso te dar \u00e9 voc\u00ea participar de Hakatons, que acaba que o treinamento vai envolver todo esse processo de participar de vitro de colo de ler livros, e \u00e9 o \u00faltimo recurso que tamb\u00e9m \u00e9 muito importante que eu arabei a gente lembrar que \u00e9 o Cess50, que \u00e9 o curso de Harvard,",
+         "keywords":[
+            "gente"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"edfc2e60-4428-4e00-9fd4-f87667be4856",
+         "startTime":334.0,
+         "endTime":355.0,
+         "transcript":" do Sons 20 horas do Mingano de Computa\u00e7\u00e3o, ent\u00e3o \u00e9 algumas lecture de ci\u00eancia e computa\u00e7\u00e3o de Harvard e gratuitos na internet, que \u00e9 tamb\u00e9m um excelente caminho para voc\u00ea come\u00e7ar a sua tilha nesse m\u00e1, conhecimento, que pode ser um pouquinho profundo demais, mas que com certeza voc\u00ea consegue achar seu caminho dele, t\u00e1?",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"a0eb2204-5243-4fdc-adb7-d98a167f084c",
+         "startTime":355.0,
+         "endTime":374.0,
+         "transcript":" E afinal, o que s\u00e3o os estudos de dados e algoritmos? Algoritmos da defini\u00e7\u00e3o t\u00e9cnica dele \u00e9 uma sequ\u00eancia de passos para terminar uma tarefa espec\u00edfica, ent\u00e3o voc\u00ea tem um problema espec\u00edfico, voc\u00ea tem que dar uma sequ\u00eancia de instru\u00e7\u00f5es para computador para ele determinado, para ele executar esse taref, e te dar um resultado desejado, certo?",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"f068c20b-f72d-4add-bbf9-29f7b0bd33b7",
+         "startTime":374.0,
+         "endTime":398.0,
+         "transcript":" Isso do judiado \u00e9 basicamente a maneira como a gente organiza os nossos dados na aplica\u00e7\u00e3o, ent\u00e3o como voc\u00ea quer disponibilizar os seus dados preso\u00e1rios, como voc\u00ea quer armazenar esses dados, ent\u00e3o voc\u00ea tem conhecimento disso, vai fazer com que voc\u00ea consiga desenvolver o c\u00f3digo mais os mesados, melhores, mais bonitos que podem ser mais e que podem ser reutilizados ao longo da aplica\u00e7\u00e3o, demorou?",
+         "keywords":[
+            "ent\u00e3o",
+            "gente"
+         ]
+      },
+      {
+         "py/object":"app.src.app.domain.model.transcript_time.TranscriptTime",
+         "id":"46a8c627-704e-481b-b956-5fa0a2b74ceb",
+         "startTime":398.0,
+         "endTime":424.0,
+         "transcript":" Ent\u00e3o, esse \u00e9 o papo que eu tive para falar hoje sobre algoritmos os seus dados, espero que seja proveitoso para voc\u00ea, pega essa vis\u00e3o um pouco mais aprofundada do porqu\u00ea isso d\u00e1 isso, porque n\u00e3o \u00e9 um modo bagem, apesar de voc\u00ea n\u00e3o praticamente nunca usar isso no mercado de trabalho, mas vai l\u00e1 apenas conversa, eu vou ver o que estamos juntos, dois ou dois ou tr\u00eas alcione, espero que voc\u00ea consiga o seu logo, estou contigo nessa, e \u00e9 n\u00f3s!",
+         "keywords":[
+            "ent\u00e3o"
+         ]
+      }
+   ]
+}

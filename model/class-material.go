@@ -10,3 +10,9 @@ type ClassMaterial struct{
 	TranscriptTime 	[]TranscriptTime	`bson:"TranscriptTime"`
 	Keyword 		[]Keyword 			`bson:"Keyword"`
 }
+
+type TranscriptTime struct {
+    StartTime  float64 `bson:"StartTime"`
+    EndTime    float64 `bson:"EndTime"`
+    Transcript string  `bson:"Transcript"`
+}

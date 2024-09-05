@@ -69,3 +69,6 @@ func (s *ClassMaterialService) FindByID(ctx context.Context, id string) (*model.
     return classMaterial, nil
 }
 
+func (s *ClassMaterialService) UpdateTranscriptTime(ctx context.Context, id string, transcriptTime []model.TranscriptTime) error {
+    return s.repo.UpdateTranscriptTime(ctx, id, transcriptTime)
+}

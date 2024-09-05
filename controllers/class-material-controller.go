@@ -50,3 +50,16 @@ func (c *ClassMaterialController) FindByID(ctx echo.Context) error {
     }
     return ctx.JSON(http.StatusOK, classMaterial)
 }
+
+func (c *ClassMaterialController) UpdateTranscriptTime(ctx echo.Context) error {
+    id := ctx.Param("id")
+    var transcriptTime []model.TranscriptTime
+    if err := ctx.Bind(&transcriptTime); err != nil {
+        return ctx.JSON(http.StatusBadRequest, err.Error())
+    }
+    err := c.service.UpdateTranscriptTime(context.Background(), id, transcriptTime)
+    if err != nil {
+        return ctx.JSON(http.StatusInternalServerError, err.Error())
+    }
+    return ctx.JSON(http.StatusOK, "TranscriptTime atualizado com sucesso")
+}

@@ -17,17 +17,11 @@ func NewKeywordService(repo repository.KeywordRepository) *KeywordService {
     return &KeywordService{repo: repo}
 }
 
-func (s *KeywordService) validateKeyword(kw *model.Keyword) error {
-    if kw.CourseId == "" {
-        return errors.New("courseID é obrigatório")
-    }
+func (s *KeywordService) validateKeyword(kw *model.Keyword) error {    
     if kw.Keyword == "" {
         return errors.New("keyword é obrigatório")
     }
-    if kw.ClassMaterialId == "" {
-        return errors.New("classMaterialId é obrigatório")
-    }
-    return nil
+        return nil
 }
 
 func (s *KeywordService) Create(ctx context.Context, keyword *model.Keyword) error {

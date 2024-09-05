@@ -11,7 +11,7 @@ type ClassMaterialRepository interface {
     Create(ctx context.Context, classMaterial *model.ClassMaterial) error
     FindAll(ctx context.Context) ([]model.ClassMaterial, error)
 	FindByID(ctx context.Context, id string) (*model.ClassMaterial, error)
-
+    UpdateTranscriptTime(ctx context.Context, id string, transcriptTime []model.TranscriptTime) error
 }
 
 type classMaterialRepository struct {
@@ -52,4 +52,11 @@ func (r *classMaterialRepository) FindByID(ctx context.Context, id string) (*mod
         return nil, err
     }
     return &classMaterial, nil
+}
+
+func (r *classMaterialRepository) UpdateTranscriptTime(ctx context.Context, id string, transcriptTime []model.TranscriptTime) error {
+    filter := bson.M{"_id": id}
+    update := bson.M{"$set": bson.M{"TranscriptTime": transcriptTime}}
+    _, err := r.collection.UpdateOne(ctx, filter, update)
+    return err
 }

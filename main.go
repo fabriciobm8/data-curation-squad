@@ -29,13 +29,12 @@ func main() {
     // Initialize repositories and services
     classMaterialRepo := repository.NewClassMaterialRepository(client)
     classMaterialService := service.NewClassMaterialService(classMaterialRepo)
-    transcriptTimeRepo := repository.NewTranscriptTimeRepository(client)
-    transcriptTimeService := service.NewTranscriptTimeService(transcriptTimeRepo)
+    
     keywordRepo := repository.NewKeywordRepository(client)
     keywordService := service.NewKeywordService(keywordRepo)
 
     // Registrar rotas
-	controllers.RegisterRoutes(e, classMaterialService, transcriptTimeService, keywordService)
+	controllers.RegisterRoutes(e, classMaterialService, keywordService)
 	
 
     e.Logger.Fatal(e.Start(":8080"))

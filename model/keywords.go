@@ -1,8 +1,7 @@
 package model
 
 type Keyword struct {
-	ClassMaterialId	string	`bson:"_id" validate:"required"`
-	CourseId		string	`bson:"CourseId"`
+	keywordId		string	`bson:"_id" validate:"required"`
 	Keyword     	string	`bson:"Keyword"`
 	UsageCount  	int		`bson:"UsageCount"`
 }
