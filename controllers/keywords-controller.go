@@ -2,7 +2,6 @@ package controllers
 
 import (
     "context"
-    "data-curation-squad/model"
     "data-curation-squad/service"
     "github.com/labstack/echo/v4"
     "net/http"
@@ -16,16 +15,9 @@ func NewKeywordController(service *service.KeywordService) *KeywordController {
     return &KeywordController{service: service}
 }
 
-func (c *KeywordController) Create(ctx echo.Context) error {
-    var keyword model.Keyword
-    if err := ctx.Bind(&keyword); err != nil {
-        return ctx.JSON(http.StatusBadRequest, err.Error())
-    }
-    err := c.service.Create(context.Background(), &keyword)
-    if err != nil {
-        return ctx.JSON(http.StatusInternalServerError, err.Error())
-    }
-    return ctx.JSON(http.StatusCreated, keyword)
+type KeywordRequest struct {
+    ClassMaterialID string   `json:"classMaterialId"`
+    Keywords        []string `json:"keywords"`
 }
 
 func (c *KeywordController) FindAll(ctx echo.Context) error {
@@ -49,4 +41,19 @@ func (c *KeywordController) FindByID(ctx echo.Context) error {
         return ctx.JSON(http.StatusInternalServerError, err.Error())
     }
     return ctx.JSON(http.StatusOK, keyword)
+}
+
+// Endpoint para salvar a lista de keywords
+func (c *KeywordController) SaveKeywords(ctx echo.Context) error {
+    var request KeywordRequest
+    if err := ctx.Bind(&request); err != nil {
+        return ctx.JSON(http.StatusBadRequest, map[string]string{"error": "invalid input"})
+    }
+
+    err := c.service.SaveKeywords(context.Background(), request.Keywords)
+    if err != nil {
+        return ctx.JSON(http.StatusInternalServerError, map[string]string{"error": "could not save keywords"})
+    }
+
+    return ctx.JSON(http.StatusOK, map[string]string{"message": "keywords saved successfully"})
 }

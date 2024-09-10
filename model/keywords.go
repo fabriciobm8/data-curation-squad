@@ -1,8 +1,9 @@
 package model
 
-type Keyword struct {
-	keywordId		string	`bson:"_id" validate:"required"`
-	Keyword     	string	`bson:"Keyword"`
-	UsageCount  	int		`bson:"UsageCount"`
-}
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
+type Keyword struct {
+    ID         primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
+    Keyword    string             `bson:"keyword" json:"keyword"`
+    UsageCount int                `bson:"usageCount" json:"usageCount"`
+}

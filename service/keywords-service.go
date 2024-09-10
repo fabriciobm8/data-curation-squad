@@ -17,21 +17,6 @@ func NewKeywordService(repo repository.KeywordRepository) *KeywordService {
     return &KeywordService{repo: repo}
 }
 
-func (s *KeywordService) validateKeyword(kw *model.Keyword) error {    
-    if kw.Keyword == "" {
-        return errors.New("keyword é obrigatório")
-    }
-        return nil
-}
-
-func (s *KeywordService) Create(ctx context.Context, keyword *model.Keyword) error {
-    if err := s.validateKeyword(keyword); err != nil {
-        return err
-    }   
-    
-    return s.repo.Create(ctx, keyword)
-}
-
 func (s *KeywordService) FindAll(ctx context.Context) ([]model.Keyword, error) {
     return s.repo.FindAll(ctx)
 }
@@ -50,4 +35,17 @@ func (s *KeywordService) FindByID(ctx context.Context, id string) (*model.Keywor
     }
     
     return keyword, nil
+}
+
+// Transforma uma lista de strings em uma lista de models.Keyword e chama o repositório para salvá-las
+func (s *KeywordService) SaveKeywords(ctx context.Context, keywordList []string) error {
+    var keywords []model.Keyword
+    for _, kw := range keywordList {
+        keyword := model.Keyword{
+            Keyword:    kw,
+            UsageCount: 0, // Inicializa usageCount como 0
+        }
+        keywords = append(keywords, keyword)
+    }
+    return s.repo.SaveKeywords(ctx, keywords)
 }

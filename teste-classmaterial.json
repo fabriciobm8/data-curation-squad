@@ -1,0 +1,11 @@
+{
+    "id": "64d4f1e3f1a2c8b42b6d7e1f",
+    "courseId": "course1",
+    "objectiveId": "objective1",
+    "materialId": "material1",
+    "transcript": "Sample transcript",
+    "materialType": "video",
+    "isSuccessful": false,
+    "transcriptTime": [],
+    "keyword": []
+}

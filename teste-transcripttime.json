@@ -1,0 +1,13 @@
+[
+    {
+        "startTime":0.00,
+        "endTime":9.99,
+        "transcript": "transcript-time1"
+    },
+    {
+        "startTime":10.00,
+        "endTime":21.77,
+        "transcript": "transcript-time2"
+    }
+
+]

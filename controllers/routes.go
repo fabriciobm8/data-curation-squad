@@ -15,14 +15,14 @@ func RegisterRoutes(e *echo.Echo, classMaterialService *service.ClassMaterialSer
     e.POST("/class-material", classMaterialController.Create)
     e.GET("/class-material", classMaterialController.FindAll)
     e.GET("/class-material/:id",classMaterialController.FindByID)
-    e.PATCH("/class-material/:id/transcript-time", classMaterialController.UpdateTranscriptTime)
+    e.PATCH("/class-material/transcript-time/:id", classMaterialController.UpdateTranscriptTime)
     //e.PUT("/class-material/:id", classMaterialController.Update)
     //e.DELETE("/class-material/:id", classMaterialController.Delete)
     //e.PATCH("/class-material/update-isSuccessful/:id", classMaterialController.UpdateIsSuccessfulClassMaterial)
 
     
     // Rotas para Keyword
-    e.POST("/keyword", keywordController.Create)
+    e.POST("/keywords", keywordController.SaveKeywords)
     e.GET("/keyword", keywordController.FindAll)
     e.GET("/keyword/:id", keywordController.FindByID)
     //e.PUT("/keyword/:id", keywordController.Update)
