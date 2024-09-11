@@ -12,7 +12,9 @@ type ClassMaterial struct{
 }
 
 type TranscriptTime struct {
-    StartTime  float64 `bson:"StartTime"`
-    EndTime    float64 `bson:"EndTime"`
-    Transcript string  `bson:"Transcript"`
+	Id		   string    `bson:"_id" validate:"required"`
+    StartTime  float64   `bson:"StartTime"`
+    EndTime    float64   `bson:"EndTime"`
+    Transcript string    `bson:"Transcript"`
+	Keywords   []string  `bson:"Keyword"`
 }
