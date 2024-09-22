@@ -31,7 +31,7 @@ func main() {
     classMaterialService := service.NewClassMaterialService(classMaterialRepo)
     
     keywordRepo := repository.NewKeywordRepository(client)
-    keywordService := service.NewKeywordService(keywordRepo)
+    keywordService := service.NewKeywordService(keywordRepo, classMaterialService) // Passar classMaterialService como segundo argumento
 
     // Registrar rotas
 	controllers.RegisterRoutes(e, classMaterialService, keywordService)
