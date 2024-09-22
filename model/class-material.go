@@ -8,7 +8,7 @@ type ClassMaterial struct{
 	MaterialType 	string				`bson:"MaterialType" validate:"required"`
 	IsSuccessful	bool				`bson:"IsSuccessful" default:"false"`
 	TranscriptTime 	[]TranscriptTime	`bson:"TranscriptTime"`
-	Keyword 		[]Keyword 			`bson:"Keyword"`
+	Keyword 		[]string 			`bson:"Keyword"`
 }
 
 type TranscriptTime struct {

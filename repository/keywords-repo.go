@@ -5,7 +5,6 @@ import (
     "data-curation-squad/model"
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/mongo"
-    "log"
     "go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -26,20 +25,15 @@ func NewKeywordRepository(client *mongo.Client) KeywordRepository {
 }
 
 func (r *keywordRepository) FindAll(ctx context.Context) ([]model.Keyword, error) {
-    var keywords []model.Keyword
     cursor, err := r.collection.Find(ctx, bson.D{{}})
     if err != nil {
         return nil, err
     }
     defer cursor.Close(ctx)
-    for cursor.Next(ctx) {
-        var keyword model.Keyword
-        if err := cursor.Decode(&keyword); err != nil {
-            return nil, err
-        }
-        keywords = append(keywords, keyword)
-    }
-    return keywords, nil
+
+    var keywords []model.Keyword
+    err = cursor.All(ctx, &keywords)
+    return keywords, err
 }
 
 func (r *keywordRepository) FindByID(ctx context.Context, id string) (*model.Keyword, error) {
@@ -71,27 +65,26 @@ func (r *keywordRepository) FindByKeyword(ctx context.Context, keyword string) (
     return &result, nil
 }
 
-// Salva a lista de keywords, criando apenas as que não existem
+// Salva a lista de keywords, criando apenas as que não existem e atualizando o UsageCount se já existirem
 func (r *keywordRepository) SaveKeywords(ctx context.Context, keywords []model.Keyword) error {
+    var err error
     for _, keyword := range keywords {
-        existingKeyword, err := r.FindByKeyword(ctx, keyword.Keyword) // Verifica se a keyword já existe
+        existingKeyword, err := r.FindByKeyword(ctx, keyword.Keyword)
         if err != nil {
-            log.Printf("Error finding keyword: %v", err)
-            return err
+            continue
         }
 
         if existingKeyword == nil {
-            // Se a keyword não existir, cria um novo documento
             keyword.ID = primitive.NewObjectID()
-            keyword.UsageCount = 0
-
-            _, err := r.collection.InsertOne(ctx, keyword)
-            if err != nil {
-                log.Printf("Error inserting keyword: %v", err)
-                return err
-            }
+            keyword.UsageCount = 1
+            _, err = r.collection.InsertOne(ctx, keyword)
+        } else {
+            _, err = r.collection.UpdateOne(ctx, bson.M{"_id": existingKeyword.ID}, bson.M{"$inc": bson.M{"usageCount": 1}})
         }
-        // Se a keyword já existir, não faz nada (pula para a próxima)
+
+        if err != nil {
+            break
+        }
     }
-    return nil
+    return err
 }

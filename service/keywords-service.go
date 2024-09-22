@@ -6,6 +6,7 @@ import (
     "data-curation-squad/repository"
     "errors"
 	"go.mongodb.org/mongo-driver/mongo"
+    "strings"
 
 )
 
@@ -41,9 +42,11 @@ func (s *KeywordService) FindByID(ctx context.Context, id string) (*model.Keywor
 func (s *KeywordService) SaveKeywords(ctx context.Context, keywordList []string) error {
     var keywords []model.Keyword
     for _, kw := range keywordList {
+        // Converte a palavra-chave para minúsculas
+        lowerKw := strings.ToLower(kw)
         keyword := model.Keyword{
-            Keyword:    kw,
-            UsageCount: 0, // Inicializa usageCount como 0
+            Keyword:    lowerKw,
+
         }
         keywords = append(keywords, keyword)
     }
