@@ -10,12 +10,12 @@ import (
 )
 
 type KeywordService struct {
-	repo           repository.KeywordRepository
-	classMaterialService *ClassMaterialService
+	repo                   repository.KeywordRepository
+	ClassMaterialService   *ClassMaterialService
 }
 
 func NewKeywordService(repo repository.KeywordRepository, classMaterialService *ClassMaterialService) *KeywordService {
-	return &KeywordService{repo: repo, classMaterialService: classMaterialService}
+	return &KeywordService{repo: repo, ClassMaterialService: classMaterialService}
 }
 
 func (s *KeywordService) FindAll(ctx context.Context) ([]model.Keyword, error) {
@@ -39,47 +39,49 @@ func (s *KeywordService) FindByID(ctx context.Context, id string) (*model.Keywor
 }
 
 func (s *KeywordService) SaveKeywords(ctx context.Context, classMaterialID string, keywordList []string) error {
-    var keywords []model.Keyword
-    for _, kw := range keywordList {
-        // Converte a palavra-chave para minúsculas
-        lowerKw := strings.ToLower(kw)
-        keyword := model.Keyword{
-            Keyword: lowerKw,
-        }
-        keywords = append(keywords, keyword)
-    }
 
-    // Verifica se a keyword já existe na coleção
-    for _, keyword := range keywords {
-        _, err := s.repo.FindByKeyword(ctx, keyword.Keyword)
-        if err != nil {
-            if err != mongo.ErrNoDocuments {
-                return err
-            }
-        }
-    }
+	var keywords []model.Keyword
+	for _, kw := range keywordList {
+		lowerKw := strings.ToLower(kw)
+		keyword := model.Keyword{ Keyword: lowerKw }
+		keywords = append(keywords, keyword)
+	}
 
-    // Salva as keywords no banco de dados
-    err := s.repo.SaveKeywords(ctx, keywords)
+	for _, keyword := range keywords {
+		_, err := s.repo.FindByKeyword(ctx, keyword.Keyword)
+		if err != nil && err != mongo.ErrNoDocuments {
+			return err
+		}
+	}
+
+	err := s.repo.SaveKeywords(ctx, keywords)
+	if err != nil {
+		return err
+	}
+
+	classMaterial, err := s.ClassMaterialService.FindByID(ctx, classMaterialID)
     if err != nil {
         return err
     }
 
-    // Adiciona o ID da keyword ao ClassMaterial correspondente
-    classMaterial, err := s.classMaterialService.FindByID(ctx, classMaterialID)
-    if err != nil {
-        return err
-    }
+	for _, keyword := range keywords {
+		savedKeyword, err := s.repo.FindByKeyword(ctx, keyword.Keyword)
+		if err != nil {
+			return err
+		}
+		classMaterial.Keyword = append(classMaterial.Keyword, savedKeyword.ID.Hex())
+	}
 
-    for _, keyword := range keywords {
-        // Encontre o ID da keyword que foi salva no banco de dados
-        savedKeyword, err := s.repo.FindByKeyword(ctx, keyword.Keyword)
-        if err != nil {
-            return err
-        }
-        classMaterial.Keyword = append(classMaterial.Keyword, savedKeyword.ID.Hex())
-    }
+	return s.ClassMaterialService.UpdateKeywords(ctx, classMaterialID, classMaterial.Keyword)
+}
 
-    // Atualiza o ClassMaterial com as novas keywords
-    return s.classMaterialService.UpdateKeywords(ctx, classMaterialID, classMaterial.Keyword)
+func (s *KeywordService) FindKeywordIDByName(ctx context.Context, keywordName string) (string, error) {
+	keyword, err := s.repo.FindByKeyword(ctx, keywordName)
+	if err != nil {
+		return "", err
+	}
+	if keyword == nil {
+		return "", errors.New("keyword não encontrada")
+	}
+	return keyword.ID.Hex(), nil
 }

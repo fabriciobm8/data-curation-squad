@@ -12,7 +12,7 @@ type ClassMaterialRepository interface {
 	FindAll(ctx context.Context) ([]model.ClassMaterial, error)
 	FindByID(ctx context.Context, id string) (*model.ClassMaterial, error)
 	UpdateTranscriptTime(ctx context.Context, id string, transcriptTime []model.TranscriptTime) error
-	Update(ctx context.Context, classMaterial *model.ClassMaterial) error
+	UpdateKeywords(ctx context.Context, classMaterial *model.ClassMaterial) error
 }
 
 type classMaterialRepository struct {
@@ -62,7 +62,7 @@ func (r *classMaterialRepository) UpdateTranscriptTime(ctx context.Context, id s
 	return err
 }
 
-func (r *classMaterialRepository) Update(ctx context.Context, classMaterial *model.ClassMaterial) error {
+func (r *classMaterialRepository) UpdateKeywords(ctx context.Context, classMaterial *model.ClassMaterial) error {
     // Filtra pelo ID do ClassMaterial
     filter := bson.M{"_id": classMaterial.Id}
 
@@ -89,16 +89,8 @@ func (r *classMaterialRepository) Update(ctx context.Context, classMaterial *mod
 
     // Atualiza o ClassMaterial com a lista de keywords ajustada
     update := bson.M{"$set": bson.M{
-        "CourseId":      classMaterial.CourseId,
-        "ObjectiveId":   classMaterial.ObjectiveId,
-        "MaterialId":    classMaterial.MaterialId,
-        "Transcript":     classMaterial.Transcript,
-        "MaterialType":   classMaterial.MaterialType,
-        "IsSuccessful":   classMaterial.IsSuccessful,
-        "TranscriptTime": classMaterial.TranscriptTime,
         "Keyword":       existingClassMaterial.Keyword,
     }}
-
     _, err = r.collection.UpdateOne(ctx, filter, update)
     return err
 }

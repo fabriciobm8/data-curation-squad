@@ -6,18 +6,18 @@ import (
 	"data-curation-squad/repository"
 	"errors"
 	"go.mongodb.org/mongo-driver/mongo"
+    "strings"
 )
 
 type ClassMaterialService struct {
-	repo repository.ClassMaterialRepository
+	repo           repository.ClassMaterialRepository
+	keywordService *KeywordService
 }
 
-// Cria uma nova instância de ClassMaterialService
-func NewClassMaterialService(repo repository.ClassMaterialRepository) *ClassMaterialService {
-	return &ClassMaterialService{repo: repo}
+func NewClassMaterialService(repo repository.ClassMaterialRepository, keywordService *KeywordService) *ClassMaterialService {
+	return &ClassMaterialService{repo: repo, keywordService: keywordService}
 }
 
-// Valida se o ClassMaterial possui todos os campos obrigatórios
 func (s *ClassMaterialService) validateClassMaterial(cm *model.ClassMaterial) error {
 	if cm.MaterialId == "" {
 		return errors.New("MaterialId é obrigatório")
@@ -31,13 +31,11 @@ func (s *ClassMaterialService) validateClassMaterial(cm *model.ClassMaterial) er
 	return nil
 }
 
-// Cria um novo ClassMaterial
 func (s *ClassMaterialService) Create(ctx context.Context, classMaterial *model.ClassMaterial) error {
 	if err := s.validateClassMaterial(classMaterial); err != nil {
 		return err
 	}
 
-	// Verifica se já existe um ClassMaterial com o mesmo Id
 	existingCM, _ := s.repo.FindByID(ctx, classMaterial.Id)
 	if existingCM != nil {
 		return errors.New("classMaterial já existe")
@@ -46,16 +44,14 @@ func (s *ClassMaterialService) Create(ctx context.Context, classMaterial *model.
 	return s.repo.Create(ctx, classMaterial)
 }
 
-// Retorna todos os ClassMaterials
 func (s *ClassMaterialService) FindAll(ctx context.Context) ([]model.ClassMaterial, error) {
 	return s.repo.FindAll(ctx)
 }
 
-// Encontra um ClassMaterial por ID
 func (s *ClassMaterialService) FindByID(ctx context.Context, id string) (*model.ClassMaterial, error) {
-	if id == "" {
-		return nil, errors.New("id é obrigatório")
-	}
+    if s.keywordService == nil {
+        return nil, errors.New("keywordService is nil")
+    }
 
 	classMaterial, err := s.repo.FindByID(ctx, id)
 	if err != nil {
@@ -68,30 +64,46 @@ func (s *ClassMaterialService) FindByID(ctx context.Context, id string) (*model.
 	return classMaterial, nil
 }
 
-func (s *ClassMaterialService) UpdateTranscriptTime(ctx context.Context, id string, transcriptTime []model.TranscriptTime) error {
-	return s.repo.UpdateTranscriptTime(ctx, id, transcriptTime)
+func (s *ClassMaterialService) UpdateTranscriptTime(ctx context.Context, classMaterialID string, transcriptTimes []model.TranscriptTime) error {
+	_, err := s.FindByID(ctx, classMaterialID)
+	if err != nil {
+		return err
+	}
+
+	for i, tt := range transcriptTimes {
+		for j, keyword := range tt.Keywords {
+			// Converta a keyword para minúsculas
+			keywordLower := strings.ToLower(keyword)
+			keywordID, err := s.keywordService.FindKeywordIDByName(ctx, keywordLower)
+			if err == nil {
+				transcriptTimes[i].Keywords[j] = keywordID
+			} else {
+				return err
+			}
+		}
+	}
+
+	return s.repo.UpdateTranscriptTime(ctx, classMaterialID, transcriptTimes)
 }
 
+
 func (s *ClassMaterialService) UpdateKeywords(ctx context.Context, classMaterialID string, newKeywords []string) error {
-    classMaterial, err := s.FindByID(ctx, classMaterialID)
-    if err != nil {
-        return err
-    }
+	classMaterial, err := s.FindByID(ctx, classMaterialID)
+	if err != nil {
+		return err
+	}
 
-    // Cria um mapa para verificar se a keyword já existe no ClassMaterial
-    existingKeywordMap := make(map[string]struct{})
-    for _, id := range classMaterial.Keyword {
-        existingKeywordMap[id] = struct{}{}
-    }
+	existingKeywordMap := make(map[string]struct{})
+	for _, id := range classMaterial.Keyword {
+		existingKeywordMap[id] = struct{}{}
+	}
 
-    // Adiciona apenas novas keywords
-    for _, newID := range newKeywords {
-        if _, exists := existingKeywordMap[newID]; !exists {
-            classMaterial.Keyword = append(classMaterial.Keyword, newID)
-            existingKeywordMap[newID] = struct{}{} // Adiciona ao mapa para futuras verificações
-        }
-    }
+	for _, newID := range newKeywords {
+		if _, exists := existingKeywordMap[newID]; !exists {
+			classMaterial.Keyword = append(classMaterial.Keyword, newID)
+			existingKeywordMap[newID] = struct{}{}
+		}
+	}
 
-    // Atualiza o ClassMaterial no repositório
-    return s.repo.Update(ctx, classMaterial) // Use o repositório para atualizar
+	return s.repo.UpdateKeywords(ctx, classMaterial)
 }
