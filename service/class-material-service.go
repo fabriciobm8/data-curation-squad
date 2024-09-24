@@ -107,3 +107,16 @@ func (s *ClassMaterialService) UpdateKeywords(ctx context.Context, classMaterial
 
 	return s.repo.UpdateKeywords(ctx, classMaterial)
 }
+
+func (s *ClassMaterialService) GetByCourseId(ctx context.Context, courseId string) ([]model.ClassMaterial, error) {
+    return s.repo.GetByCourseId(ctx, courseId)
+}
+
+func (s *ClassMaterialService) GetByObjectiveId(ctx context.Context, objectiveId string) ([]model.ClassMaterial, error) {
+    return s.repo.GetByObjectiveId(ctx, objectiveId)
+}
+
+func (s *ClassMaterialService) GetByMaterialId(ctx context.Context, materialId string) ([]model.ClassMaterial, error) {
+    return s.repo.GetByMaterialId(ctx, materialId)
+}
+

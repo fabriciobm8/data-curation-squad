@@ -13,6 +13,10 @@ type ClassMaterialRepository interface {
 	FindByID(ctx context.Context, id string) (*model.ClassMaterial, error)
 	UpdateTranscriptTime(ctx context.Context, id string, transcriptTime []model.TranscriptTime) error
 	UpdateKeywords(ctx context.Context, classMaterial *model.ClassMaterial) error
+	GetByCourseId(ctx context.Context, courseId string) ([]model.ClassMaterial, error)
+	GetByObjectiveId(ctx context.Context, objectiveId string) ([]model.ClassMaterial, error)
+	GetByMaterialId(ctx context.Context, materialId string) ([]model.ClassMaterial, error)
+	FindByKeywordIds(ctx context.Context, keywordIds []string) ([]model.ClassMaterial, error)
 }
 
 type classMaterialRepository struct {
@@ -93,4 +97,73 @@ func (r *classMaterialRepository) UpdateKeywords(ctx context.Context, classMater
     }}
     _, err = r.collection.UpdateOne(ctx, filter, update)
     return err
+}
+
+func (r *classMaterialRepository) GetByCourseId(ctx context.Context, courseId string) ([]model.ClassMaterial, error) {
+    var classMaterials []model.ClassMaterial
+    cursor, err := r.collection.Find(ctx, bson.M{"CourseId": courseId})
+    if err != nil {
+        return nil, err
+    }
+    defer cursor.Close(ctx)
+    for cursor.Next(ctx) {
+        var classMaterial model.ClassMaterial
+        if err := cursor.Decode(&classMaterial); err != nil {
+            return nil, err
+        }
+        classMaterials = append(classMaterials, classMaterial)
+    }
+    return classMaterials, nil
+}
+
+func (r *classMaterialRepository) GetByObjectiveId(ctx context.Context, objectiveId string) ([]model.ClassMaterial, error) {
+    var classMaterials []model.ClassMaterial
+    cursor, err := r.collection.Find(ctx, bson.M{"ObjectiveId": objectiveId})
+    if err != nil {
+        return nil, err
+    }
+    defer cursor.Close(ctx)
+    for cursor.Next(ctx) {
+        var classMaterial model.ClassMaterial
+        if err := cursor.Decode(&classMaterial); err != nil {
+            return nil, err
+        }
+        classMaterials = append(classMaterials, classMaterial)
+    }
+    return classMaterials, nil
+}
+
+func (r *classMaterialRepository) GetByMaterialId(ctx context.Context, materialId string) ([]model.ClassMaterial, error) {
+    var classMaterials []model.ClassMaterial
+    cursor, err := r.collection.Find(ctx, bson.M{"MaterialId": materialId})
+    if err != nil {
+        return nil, err
+    }
+    defer cursor.Close(ctx)
+    for cursor.Next(ctx) {
+        var classMaterial model.ClassMaterial
+        if err := cursor.Decode(&classMaterial); err != nil {
+            return nil, err
+        }
+        classMaterials = append(classMaterials, classMaterial)
+    }
+    return classMaterials, nil
+}
+
+func (r *classMaterialRepository) FindByKeywordIds(ctx context.Context, keywordIds []string) ([]model.ClassMaterial, error) {
+    filter := bson.M{"Keyword": bson.M{"$in": keywordIds}}
+    var classMaterials []model.ClassMaterial
+    cursor, err := r.collection.Find(ctx, filter)
+    if err != nil {
+        return nil, err
+    }
+    defer cursor.Close(ctx)
+    for cursor.Next(ctx) {
+        var classMaterial model.ClassMaterial
+        if err := cursor.Decode(&classMaterial); err != nil {
+            return nil, err
+        }
+        classMaterials = append(classMaterials, classMaterial)
+    }
+    return classMaterials, nil
 }

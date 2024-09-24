@@ -63,3 +63,30 @@ func (c *ClassMaterialController) UpdateTranscriptTime(ctx echo.Context) error {
     }
     return ctx.JSON(http.StatusOK, "TranscriptTime atualizado com sucesso")
 }
+
+func (c *ClassMaterialController) GetByCourseId(ctx echo.Context) error {
+    courseId := ctx.Param("courseId")
+    classMaterials, err := c.service.GetByCourseId(context.Background(), courseId)
+    if err != nil {
+        return ctx.JSON(http.StatusInternalServerError, err.Error())
+    }
+    return ctx.JSON(http.StatusOK, classMaterials)
+}
+
+func (c *ClassMaterialController) GetByObjectiveId(ctx echo.Context) error {
+    objectiveId := ctx.Param("objectiveId")
+    classMaterials, err := c.service.GetByObjectiveId(context.Background(), objectiveId)
+    if err != nil {
+        return ctx.JSON(http.StatusInternalServerError, err.Error())
+    }
+    return ctx.JSON(http.StatusOK, classMaterials)
+}
+
+func (c *ClassMaterialController) GetByMaterialId(ctx echo.Context) error {
+    materialId := ctx.Param("materialId")
+    classMaterials, err := c.service.GetByMaterialId(context.Background(), materialId)
+    if err != nil {
+        return ctx.JSON(http.StatusInternalServerError, err.Error())
+    }
+    return ctx.JSON(http.StatusOK, classMaterials)
+}
